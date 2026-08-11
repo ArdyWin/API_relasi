@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const development = {
   username: process.env.DB_USER,
@@ -7,6 +7,14 @@ const development = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   dialect: process.env.DB_DIALECT
-}
+};
 
-module.exports = { development }  
+const production = {
+  use_env_variable: "POSTGRES_URL",
+  dialect: "postgres"
+};
+
+module.exports = {
+  development,
+  production
+};
