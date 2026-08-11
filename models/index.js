@@ -47,4 +47,14 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+const connectionUrl = process.env[config.use_env_variable];
+
+if (connectionUrl) {
+  const url = new URL(connectionUrl);
+
+  console.log("DB host:", url.hostname);
+  console.log("DB port:", url.port);
+  console.log("DB sslmode:", url.searchParams.get("sslmode"));
+}
+
 module.exports = db;
